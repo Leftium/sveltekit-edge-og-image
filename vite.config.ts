@@ -35,7 +35,7 @@ function compileWasmToModule() {
 }
 
 export default defineConfig({
-	plugins: [tailwindcss(), sveltekit(), devtoolsJson(), compileWasmToModule()],
+	plugins: [compileWasmToModule(), tailwindcss(), sveltekit(), devtoolsJson()],
 	assetsInclude: ['**/*.wasm'],
 	test: {
 		projects: [
