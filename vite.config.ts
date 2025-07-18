@@ -7,7 +7,6 @@ import { defineConfig } from 'vite';
 import fs from 'fs/promises';
 import path from 'path';
 
-
 function compileWasmToModule() {
 	return {
 		name: 'compile-resvg-wasm',
@@ -36,6 +35,10 @@ function compileWasmToModule() {
 
 export default defineConfig({
 	plugins: [compileWasmToModule(), tailwindcss(), sveltekit(), devtoolsJson()],
+	// bundle @resvg/resvg-wasm into SSR (Edge) output
+	ssr: {
+		noExternal: ['@resvg/resvg-wasm']
+	},
 	assetsInclude: ['**/*.wasm'],
 	test: {
 		projects: [
