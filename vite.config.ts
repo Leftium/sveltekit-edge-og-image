@@ -4,10 +4,12 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 // import wasm from 'vite-plugin-wasm';
 
-
 export default defineConfig({
 	plugins: [tailwindcss(), sveltekit(), devtoolsJson()],
-	// bundle @resvg/resvg-wasm into SSR (Edge) output
+	build: {
+		target: 'esnext', // don’t down-transpile ESM
+		assetsInlineLimit: 0 // leave .wasm as separate import
+	},
 	ssr: {
 		noExternal: ['@resvg/resvg-wasm']
 	},

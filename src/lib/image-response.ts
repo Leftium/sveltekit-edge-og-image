@@ -15,6 +15,8 @@ import { Resvg, initWasm } from '@resvg/resvg-wasm';
 
 //import fs from 'node:fs/promises';
 
+import wasmModule from '$lib/wasm';
+
 export interface ImageResponseOptions {
 	width?: number;
 	height?: number;
@@ -49,8 +51,7 @@ export const generateImage = async <T extends Record<string, unknown>>(
 
 			//console.log(wasmModule);
 
-			// `WASM.resvg` is a pre-compiled WebAssembly.Module
-			await initWasm(WASM.resvg);
+			await initWasm(wasmModule);
 
 			wasmInitialized = true;
 		} catch (e) {

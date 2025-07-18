@@ -2,8 +2,6 @@ name = "sveltekit-edge-og-image"
 main = ".svelte-kit/cloudflare/_worker.js"
 compatibility_date = "2025-07-18"
 
-wasm_modules = { resvg = "./node_modules/@resvg/resvg-wasm/index_bg.wasm" }
-
 # workers_dev = true
 
 # [build]
